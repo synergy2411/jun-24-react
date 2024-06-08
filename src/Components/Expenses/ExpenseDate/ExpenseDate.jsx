@@ -5,6 +5,7 @@ function ExpenseDate({ createdAt }) {
   const day = createdAt.toLocaleString("en-US", { day: "numeric" });
   const year = createdAt.getFullYear();
 
+  console.log("EXPENSE DATE");
   return (
     <p>
       Date : {month} {day}, {year}
