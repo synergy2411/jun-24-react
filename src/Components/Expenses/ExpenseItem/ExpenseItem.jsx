@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import ExpenseDate from "../ExpenseDate/ExpenseDate";
 
 function ExpenseItem({ id, amount, title, createdAt }) {
@@ -17,3 +18,10 @@ function ExpenseItem({ id, amount, title, createdAt }) {
 }
 
 export default ExpenseItem;
+
+ExpenseItem.propTypes = {
+  id: PropTypes.string.isRequired,
+  amount: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  createdAt: PropTypes.instanceOf(Date).isRequired,
+};

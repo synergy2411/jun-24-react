@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function ExpenseDate({ createdAt }) {
   const month = createdAt.toLocaleString("en-US", { month: "long" });
   const day = createdAt.toLocaleString("en-US", { day: "numeric" });
@@ -11,3 +13,7 @@ function ExpenseDate({ createdAt }) {
 }
 
 export default ExpenseDate;
+
+ExpenseDate.propTypes = {
+  createdAt: PropTypes.instanceOf(Date).isRequired,
+};
