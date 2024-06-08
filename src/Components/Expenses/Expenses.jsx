@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import ExpenseItem from "./ExpenseItem/ExpenseItem";
+import AddExpense from "./AddExpense/AddExpense";
 
 function Expenses() {
   const expenses = [
@@ -23,9 +24,33 @@ function Expenses() {
     },
   ];
 
+  let [isShowForm, setIsShowForm] = useState(false);
+
+  const showFormClickHandler = () => {
+    // isShowForm = !isShowForm;        // NEVER EVER CHANGE THE STATE MUTABLY
+    setIsShowForm(!isShowForm);
+  };
+
   return (
     <div className="container">
       <h1 className="text-center">My Expenses</h1>
+
+      {/* Show Form Button */}
+      <div className="row mb-4">
+        <div className="col-4 offset-4">
+          <div className="d-grid">
+            <button
+              className="btn btn-secondary"
+              onClick={showFormClickHandler}
+            >
+              Show Form
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {isShowForm && <AddExpense />}
+
       <div className="row">
         {expenses.map((expense) => (
           // <ExpenseItem {...expense} />
