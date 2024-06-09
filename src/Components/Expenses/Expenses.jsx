@@ -29,6 +29,8 @@ function Expenses() {
 
   let [isShowForm, setIsShowForm] = useState(false);
 
+  const [selYear, setSelYear] = useState("");
+
   const showFormClickHandler = () => {
     // isShowForm = !isShowForm;        // NEVER EVER CHANGE THE STATE MUTABLY
     setIsShowForm(!isShowForm);
@@ -45,10 +47,20 @@ function Expenses() {
     );
   };
 
+  const onYearSelect = (selectedYear) => {
+    setSelYear(selectedYear);
+  };
+
+  let filteredExpenses = expenses;
+  if (selYear !== "") {
+    filteredExpenses = expenses.filter(
+      (expense) => expense.createdAt.getFullYear() === Number(selYear)
+    );
+  }
+
   return (
     <div className="container">
       <h1 className="text-center">My Expenses</h1>
-
       <div className="row mb-4">
         {/* Show Form Button */}
         <div className="col-4 offset-4">
@@ -63,14 +75,14 @@ function Expenses() {
         </div>
         {/* Filter */}
         <div className="col-4">
-          <ExpenseFilter />
+          <ExpenseFilter onYearSelect={onYearSelect} />
         </div>
       </div>
 
       {isShowForm && <AddExpense onAddNewExpense={addNewExpense} />}
 
       <div className="row">
-        {expenses.map((expense) => (
+        {filteredExpenses.map((expense) => (
           // <ExpenseItem {...expense} />
           <ExpenseItem
             key={expense.id}
