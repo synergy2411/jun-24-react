@@ -1,14 +1,23 @@
 import { useState } from "react";
+import { v4 } from "uuid";
 import "./AddExpense.css";
 
-function AddExpense() {
+function AddExpense({ onAddNewExpense }) {
   const [enteredTitle, setEnteredTitle] = useState("");
+  const [enteredAmount, setEnteredAmount] = useState("");
+  const [enteredCreatedAt, setEnteredCreatedAt] = useState("");
 
   const titleChangeHandler = (event) => setEnteredTitle(event.target.value);
 
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log("Title : ", enteredTitle);
+    let newExpense = {
+      id: v4(),
+      title: enteredTitle,
+      amount: Number(enteredAmount),
+      createdAt: new Date(enteredCreatedAt),
+    };
+    onAddNewExpense(newExpense);
   };
   return (
     <div className="backdrop">
@@ -39,12 +48,13 @@ function AddExpense() {
               placeholder=""
               step="0.1"
               min="0.5"
+              value={enteredAmount}
+              onChange={(event) => setEnteredAmount(event.target.value)}
             />
             <label htmlFor="amount">Amount:</label>
           </div>
 
           {/* createdAt */}
-
           <div className="form-floating mb-3">
             <input
               type="date"
@@ -54,6 +64,8 @@ function AddExpense() {
               placeholder=""
               min="2022-04-10"
               max="2025-03-31"
+              value={enteredCreatedAt}
+              onChange={(event) => setEnteredCreatedAt(event.target.value)}
             />
             <label htmlFor="created-at">Date</label>
           </div>

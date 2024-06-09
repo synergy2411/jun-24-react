@@ -2,27 +2,29 @@ import React, { useState } from "react";
 import ExpenseItem from "./ExpenseItem/ExpenseItem";
 import AddExpense from "./AddExpense/AddExpense";
 
+const INITIAL_EXPENSES = [
+  {
+    id: "e001",
+    title: "grocery",
+    amount: 19.9,
+    createdAt: new Date("Dec 21, 2022"),
+  },
+  {
+    id: "e002",
+    title: "shopping",
+    amount: 29.9,
+    createdAt: new Date("Mar 2, 2024"),
+  },
+  {
+    id: "e003",
+    title: "planting",
+    amount: 99.9,
+    createdAt: new Date("Aug 1, 2023"),
+  },
+];
+
 function Expenses() {
-  const expenses = [
-    {
-      id: "e001",
-      title: "grocery",
-      amount: 19.9,
-      createdAt: new Date("Dec 21, 2022"),
-    },
-    {
-      id: "e002",
-      title: "shopping",
-      amount: 29.9,
-      createdAt: new Date("Mar 2, 2024"),
-    },
-    {
-      id: "e003",
-      title: "planting",
-      amount: 99.9,
-      createdAt: new Date("Aug 1, 2023"),
-    },
-  ];
+  const [expenses, setExpenses] = useState(INITIAL_EXPENSES);
 
   let [isShowForm, setIsShowForm] = useState(false);
 
@@ -31,6 +33,10 @@ function Expenses() {
     setIsShowForm(!isShowForm);
   };
 
+  const addNewExpense = (expense) => {
+    setIsShowForm(false);
+    setExpenses((prevExpenses) => [expense, ...prevExpenses]);
+  };
   return (
     <div className="container">
       <h1 className="text-center">My Expenses</h1>
@@ -49,7 +55,7 @@ function Expenses() {
         </div>
       </div>
 
-      {isShowForm && <AddExpense />}
+      {isShowForm && <AddExpense onAddNewExpense={addNewExpense} />}
 
       <div className="row">
         {expenses.map((expense) => (

@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import ExpenseDate from "../ExpenseDate/ExpenseDate";
 
 function ExpenseItem({ id, amount, title, createdAt }) {
-  console.log("EXPENSE ITEM");
   return (
     <div className="col-4">
       <div className="card">
