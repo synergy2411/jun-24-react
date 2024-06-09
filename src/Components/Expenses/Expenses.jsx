@@ -52,6 +52,7 @@ function Expenses() {
   };
 
   let filteredExpenses = expenses;
+
   if (selYear !== "") {
     filteredExpenses = expenses.filter(
       (expense) => expense.createdAt.getFullYear() === Number(selYear)
