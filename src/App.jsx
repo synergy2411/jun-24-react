@@ -1,7 +1,4 @@
-import { useState } from "react";
-import ClassBased from "./Components/Playground/ClassBased";
-import UserLogin from "./Components/Playground/UserLogin";
-import UseEffectDemo from "./Components/Playground/UseEffectDemo";
+import UseReducerDemo from "./Components/Playground/UseReducerDemo";
 
 function App() {
   // const [show, setShow] = useState(true);
@@ -10,7 +7,8 @@ function App() {
     <div>
       <h1>App Works!</h1>
 
-      <UseEffectDemo />
+      <UseReducerDemo />
+      {/* <UseEffectDemo /> */}
       {/* <UserLogin /> */}
 
       {/* <button onClick={() => setShow(!show)} className="btn btn-secondary">

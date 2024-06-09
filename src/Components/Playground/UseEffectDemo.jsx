@@ -30,7 +30,9 @@ function UseEffectDemo() {
     const notifer = setTimeout(() => {
       fetchRepos();
     }, 1500);
-    return () => clearTimeout(notifer);
+    return () => {
+      clearTimeout(notifer);
+    };
   }, [query]);
 
   return (
