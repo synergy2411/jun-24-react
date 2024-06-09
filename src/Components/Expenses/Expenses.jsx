@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ExpenseItem from "./ExpenseItem/ExpenseItem";
 import AddExpense from "./AddExpense/AddExpense";
+import ExpenseFilter from "./ExpenseFilter/ExpenseFilter";
 
 const INITIAL_EXPENSES = [
   {
@@ -37,12 +38,19 @@ function Expenses() {
     setIsShowForm(false);
     setExpenses((prevExpenses) => [expense, ...prevExpenses]);
   };
+
+  const deleteExpense = (expenseId) => {
+    setExpenses((prevExpenses) =>
+      prevExpenses.filter((expense) => expense.id !== expenseId)
+    );
+  };
+
   return (
     <div className="container">
       <h1 className="text-center">My Expenses</h1>
 
-      {/* Show Form Button */}
       <div className="row mb-4">
+        {/* Show Form Button */}
         <div className="col-4 offset-4">
           <div className="d-grid">
             <button
@@ -52,6 +60,10 @@ function Expenses() {
               Show Form
             </button>
           </div>
+        </div>
+        {/* Filter */}
+        <div className="col-4">
+          <ExpenseFilter />
         </div>
       </div>
 
@@ -66,6 +78,7 @@ function Expenses() {
             title={expense.title}
             createdAt={expense.createdAt}
             amount={expense.amount}
+            onDeleteExpense={deleteExpense}
           />
         ))}
       </div>
