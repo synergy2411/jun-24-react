@@ -1,11 +1,20 @@
+import { useState } from "react";
 import "./AddExpense.css";
 
 function AddExpense() {
+  const [enteredTitle, setEnteredTitle] = useState("");
+
+  const titleChangeHandler = (event) => setEnteredTitle(event.target.value);
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+    console.log("Title : ", enteredTitle);
+  };
   return (
     <div className="backdrop">
       <div className="the-modal">
         <h4 className="text-center">What you spend today?</h4>
-        <form>
+        <form onSubmit={submitHandler}>
           {/* title */}
           <div className="form-floating mb-3">
             <input
@@ -14,6 +23,8 @@ function AddExpense() {
               name="title"
               id="title"
               placeholder=""
+              onChange={titleChangeHandler}
+              value={enteredTitle}
             />
             <label htmlFor="title">Title:</label>
           </div>
@@ -51,7 +62,9 @@ function AddExpense() {
           <div className="row">
             <div className="col-6">
               <div className="d-grid">
-                <button className="btn btn-primary">Add</button>
+                <button type="submit" className="btn btn-primary">
+                  Add
+                </button>
               </div>
             </div>
             <div className="col-6">
