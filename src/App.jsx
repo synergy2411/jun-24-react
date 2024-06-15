@@ -1,14 +1,17 @@
-import UseCallbackDemo from "./Components/Playground/UseCallbackDemo";
-import UseTransitionDemo from "./Components/Playground/UseTransitionDemo";
+import UseFormDemo from "./Components/Playground/UseFormDemo";
+import UseSyncExternalStoreDemo from "./Components/Playground/useSyncExternalStoreDemo";
 
 function App() {
-  // const [show, setShow] = useState(true);
-
   return (
     <div>
       <h1>App Works!</h1>
 
-      <UseTransitionDemo />
+      <UseFormDemo />
+      {/* <UseSyncExternalStoreDemo /> */}
+      {/* <UseImperativeHandleDemo /> */}
+      {/* <UseLayoutEffectDemo /> */}
+      {/* <UseDeferredValueDemo /> */}
+      {/* <UseTransitionDemo /> */}
       {/* <UseCallbackDemo /> */}
 
       {/* <ThemeContextProvider>

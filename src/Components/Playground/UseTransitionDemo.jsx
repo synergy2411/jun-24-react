@@ -32,9 +32,8 @@ function UseTransitionDemo() {
       <input type="text" value={input} onChange={inputChangeHandler} />
       <hr />
       {isPending && <p>Loading....</p>}
-      {products.map((product) => (
-        <div key={product}>{product}</div>
-      ))}
+      {!isPending &&
+        products.map((product) => <div key={product}>{product}</div>)}
     </>
   );
 }
