@@ -1,4 +1,4 @@
-import UseReducerDemo from "./Components/Playground/UseReducerDemo";
+import UseCallbackDemo from "./Components/Playground/UseCallbackDemo";
 
 function App() {
   // const [show, setShow] = useState(true);
@@ -7,7 +7,13 @@ function App() {
     <div>
       <h1>App Works!</h1>
 
-      <UseReducerDemo />
+      <UseCallbackDemo />
+
+      {/* <ThemeContextProvider>
+        <GrandParent />
+      </ThemeContextProvider> */}
+
+      {/* <UseReducerDemo /> */}
       {/* <UseEffectDemo /> */}
       {/* <UserLogin /> */}
 
