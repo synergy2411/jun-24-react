@@ -1,7 +1,8 @@
 import React from "react";
 
-function Output({ toggle }) {
+function Output({ toggle, logFn }) {
   console.log("Output");
+  logFn();
 
   return (
     <>
@@ -14,6 +15,7 @@ function Output({ toggle }) {
 export default React.memo(Output);
 
 // Compare prevProps and currProps
-// prevProps === currProps
+// prevProps.toggle === currProps.toggle
+// prevProps.logFn === currProps.logFn
 // - true : does not re-render the component
 // - false : re-render the component

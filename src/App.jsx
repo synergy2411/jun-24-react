@@ -1,4 +1,5 @@
 import UseCallbackDemo from "./Components/Playground/UseCallbackDemo";
+import UseTransitionDemo from "./Components/Playground/UseTransitionDemo";
 
 function App() {
   // const [show, setShow] = useState(true);
@@ -7,7 +8,8 @@ function App() {
     <div>
       <h1>App Works!</h1>
 
-      <UseCallbackDemo />
+      <UseTransitionDemo />
+      {/* <UseCallbackDemo /> */}
 
       {/* <ThemeContextProvider>
         <GrandParent />
